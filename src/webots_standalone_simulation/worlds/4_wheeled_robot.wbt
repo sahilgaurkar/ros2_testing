@@ -3,14 +3,14 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "../protos/baxter_xacro.proto"
+EXTERNPROTO "../protos/baxter.proto"
 
 WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation -0.2986563526879307 0.07418425047232033 0.9514731104876281 2.677439996130917
-  position 5.333534002776573 -5.315395335542727 5.211162138501
+  orientation -0.13863493662338117 0.030779045716669676 0.9898651447001263 2.7089607958796016
+  position 4.287671491362237 -5.446115466352891 2.616890954322642
 }
 TexturedBackground {
 }
@@ -203,8 +203,8 @@ Robot {
   }
   controller "4_Wheel_Robot"
 }
-baxter_xacro {
-  translation 0.06 -3.55 1.66
+baxter {
+  translation 0 -3.68 1.02
   controller "baxter_arm_motor"
   selfCollision TRUE
 }
