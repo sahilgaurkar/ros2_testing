@@ -1,19 +1,19 @@
-#VRML_SIM R2023b utf8
+#VRML_SIM R2023a utf8
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
-# This is a proto file for Webots for the baxter
-# Extracted from: /home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/urdf/baxter.urdf
+# This is a proto file for Webots for the baxter_xacro
+# Extracted from: /tmp/tmphrd7448l.urdf
 
 PROTO baxter [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
   field  SFString    name            "baxter"  # Is `Robot.name`.
-  field  SFString    controller      "void"    # Is `Robot.controller`.
-  field  MFString    controllerArgs  []        # Is `Robot.controllerArgs`.
-  field  SFString    customData      ""        # Is `Robot.customData`.
-  field  SFBool      supervisor      FALSE     # Is `Robot.supervisor`.
-  field  SFBool      synchronization TRUE      # Is `Robot.synchronization`.
-  field  SFBool      selfCollision   FALSE     # Is `Robot.selfCollision`.
+  field  SFString    controller      "<extern>"          # Is `Robot.controller`.
+  field  MFString    controllerArgs  []              # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""              # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE           # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE            # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE           # Is `Robot.selfCollision`.
 ]
 {
   Robot {
@@ -42,7 +42,7 @@ PROTO baxter [
           }
         ]
         name "collision_head_link_1"
-        boundingObject Pose {
+        boundingObject Transform {
           translation -0.070000 -0.040000 0.000000
           children [
             Sphere {
@@ -71,7 +71,7 @@ PROTO baxter [
           }
         ]
         name "collision_head_link_2"
-        boundingObject Pose {
+        boundingObject Transform {
           translation -0.070000 0.040000 0.000000
           children [
             Sphere {
@@ -92,7 +92,7 @@ PROTO baxter [
       Solid {
         children [
           DEF base_link_visual CadShape {
-            url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/torso/base_link.DAE"
+            url "baxter/meshes/torso/base_link.DAE"
           }
           Solid {
             translation -0.088970 0.155930 0.389125
@@ -122,26 +122,6 @@ PROTO baxter [
               ]
             }
           }
-          Solid {
-            children [
-              DEF PEDESTAL_visual CadShape {
-                url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/base/PEDESTAL.DAE"
-              }
-            ]
-            name "pedestal"
-            boundingObject DEF pedestal_link_collision Mesh {
-              url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/base/pedestal_link_collision.DAE"
-            }
-            physics Physics {
-              density -1
-              mass 60.863977
-              centerOfMass [ 0.000000 0.000000 0.000000 ]
-              inertiaMatrix [
-                5.063593e+00 6.086894e+00 4.961919e+00
-                1.034170e-03 8.019963e-01 1.053110e-03
-              ]
-            }
-          }
           HingeJoint {
             jointParameters HingeJointParameters {
               axis 0.000000 0.000000 1.000000
@@ -152,8 +132,8 @@ PROTO baxter [
               RotationalMotor {
                 name "head_pan"
                 maxVelocity 10000.0
-                minPosition -1.57079632679
-                maxPosition 1.57079632679
+                minPosition -1.3963
+                maxPosition 1.3963
                 maxTorque 50000.0
               }
               PositionSensor {
@@ -163,11 +143,11 @@ PROTO baxter [
             endPoint Solid {
               translation 0.060000 0.000000 0.686000
               children [
-                Pose {
+                Transform {
                   translation 0.000000 0.000000 0.009530
                   children [
                     DEF H0_visual CadShape {
-                      url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/head/H0.DAE"
+                      url "baxter/meshes/head/H0.DAE"
                     }
                   ]
                 }
@@ -187,19 +167,19 @@ PROTO baxter [
                   translation 0.122700 0.000000 0.000000
                   rotation 0.608961 0.608961 0.508265 2.201117
                   children [
-                    Pose {
+                    Transform {
                       translation 0.000000 -0.009530 -0.034700
                       rotation 0.000000 -1.000000 0.000000 1.570796
                       children [
                         DEF H1_visual CadShape {
-                          url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/head/H1.DAE"
+                          url "baxter/meshes/head/H1.DAE"
                         }
                       ]
                     }
                     Solid {
                       translation 0.000000 -0.016000 0.000000
                       children [
-                        Pose {
+                        Transform {
                           rotation 1.000000 0.000000 0.000000 0.261799
                           children [
                             Shape {
@@ -244,21 +224,6 @@ PROTO baxter [
                 Solid {
                   translation 0.128390 0.000000 0.063680
                   rotation 0.608961 0.608961 0.508265 2.201117
-                  children [
-                    Pose {
-                      translation 0 0 0
-                      rotation 0.577350 -0.577350 0.577350 2.094395
-                      children [
-                        Camera {
-                          name "head_camera"
-                          fieldOfView 1.396263
-                          width 800
-                          height 800
-                          noise 0.007000
-                        }
-                      ]
-                    }
-                  ]
                   name "head_camera"
                   physics Physics {
                     density -1
@@ -289,7 +254,7 @@ PROTO baxter [
           Solid {
             translation 0.094700 0.000000 0.817000
             children [
-              Pose {
+              Transform {
                 translation -0.034700 0.000000 0.009530
                 children [
                   Shape {
@@ -304,15 +269,6 @@ PROTO baxter [
                     }
                   }
                 ]
-              }
-              Lidar {
-                name "sonar"
-                fieldOfView 6.280000
-                verticalFieldOfView 0.001000
-                horizontalResolution 12
-                numberOfLayers 2
-                minRange 0.050000
-                maxRange 50.000000
               }
             ]
             name "sonar_ring"
@@ -355,7 +311,7 @@ PROTO baxter [
                   translation 0.055695 0.000000 0.011038
                   children [
                     DEF S0_visual CadShape {
-                      url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/upper_shoulder/S0.DAE"
+                      url "baxter/meshes/upper_shoulder/S0.DAE"
                     }
                     HingeJoint {
                       jointParameters HingeJointParameters {
@@ -369,7 +325,7 @@ PROTO baxter [
                           maxVelocity 1.5
                           minPosition -2.147
                           maxPosition 1.047
-                          maxTorque 100.0
+                          maxTorque 50.0
                         }
                         PositionSensor {
                           name "right_s1_sensor"
@@ -380,7 +336,7 @@ PROTO baxter [
                         rotation -1.000000 0.000000 0.000000 1.570796
                         children [
                           DEF S1_visual CadShape {
-                            url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/lower_shoulder/S1.DAE"
+                            url "baxter/meshes/lower_shoulder/S1.DAE"
                           }
                           HingeJoint {
                             jointParameters HingeJointParameters {
@@ -405,7 +361,7 @@ PROTO baxter [
                               rotation 0.577350 0.577350 0.577350 2.094395
                               children [
                                 DEF E0_visual CadShape {
-                                  url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/upper_elbow/E0.DAE"
+                                  url "baxter/meshes/upper_elbow/E0.DAE"
                                 }
                                 HingeJoint {
                                   jointParameters HingeJointParameters {
@@ -430,7 +386,7 @@ PROTO baxter [
                                     rotation -0.577350 -0.577350 -0.577350 2.094395
                                     children [
                                       DEF E1_visual CadShape {
-                                        url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/lower_elbow/E1.DAE"
+                                        url "baxter/meshes/lower_elbow/E1.DAE"
                                       }
                                       HingeJoint {
                                         jointParameters HingeJointParameters {
@@ -455,7 +411,7 @@ PROTO baxter [
                                           rotation 0.577350 0.577350 0.577350 2.094395
                                           children [
                                             DEF W0_visual CadShape {
-                                              url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/upper_forearm/W0.DAE"
+                                              url "baxter/meshes/upper_forearm/W0.DAE"
                                             }
                                             Solid {
                                               translation -0.056500 0.000000 0.120000
@@ -494,7 +450,7 @@ PROTO baxter [
                                                 rotation -0.577350 -0.577350 -0.577350 2.094395
                                                 children [
                                                   DEF W1_visual CadShape {
-                                                    url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/lower_forearm/W1.DAE"
+                                                    url "baxter/meshes/lower_forearm/W1.DAE"
                                                   }
                                                   HingeJoint {
                                                     jointParameters HingeJointParameters {
@@ -519,7 +475,7 @@ PROTO baxter [
                                                       rotation 0.577350 0.577350 0.577350 2.094395
                                                       children [
                                                         DEF W2_visual CadShape {
-                                                          url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/wrist/W2.DAE"
+                                                          url "baxter/meshes/wrist/W2.DAE"
                                                         }
                                                         Solid {
                                                           translation 0.000000 0.000000 0.113550
@@ -540,19 +496,6 @@ PROTO baxter [
                                                                     height 0.01
                                                                   }
                                                                 }
-                                                                Pose {
-                                                                  translation 0 0 0
-                                                                  rotation 0.577350 -0.577350 0.577350 2.094395
-                                                                  children [
-                                                                    Camera {
-                                                                      name "right_hand_camera"
-                                                                      fieldOfView 1.396263
-                                                                      width 800
-                                                                      height 800
-                                                                      noise 0.007000
-                                                                    }
-                                                                  ]
-                                                                }
                                                               ]
                                                               name "right_hand_camera"
                                                               physics Physics {
@@ -567,6 +510,26 @@ PROTO baxter [
                                                             }
                                                             Solid {
                                                               translation 0.038250 0.012000 0.015355
+                                                              children [
+                                                                Solid {
+                                                                  rotation 0.000000 -1.000000 0.000000 1.570796
+                                                                  children [
+                                                                    Solid {
+                                                                      translation 0 0 0
+                                                                      rotation 0.577350 -0.577350 0.577350 2.094395
+                                                                      children [
+                                                                        Camera {
+                                                                          name "right_camera"
+                                                                          fieldOfView 1.047000
+                                                                          width 640
+                                                                          height 400
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                  name "right_hand_camera_gz"
+                                                                }
+                                                              ]
                                                               name "right_hand_camera_axis"
                                                               physics Physics {
                                                                 density -1
@@ -587,15 +550,6 @@ PROTO baxter [
                                                                   geometry Box {
                                                                      size 0.005000 0.020000 0.005000
                                                                   }
-                                                                }
-                                                                Lidar {
-                                                                  name "ir_right"
-                                                                  fieldOfView 1.000000
-                                                                  horizontalResolution 1
-                                                                  numberOfLayers 1
-                                                                  minRange 0.004000
-                                                                  maxRange 0.400000
-                                                                  near 0.004000
                                                                 }
                                                               ]
                                                               name "right_hand_range"
@@ -631,58 +585,223 @@ PROTO baxter [
                                                               }
                                                             }
                                                             Solid {
+                                                              translation 0.000000 0.000000 0.025000
                                                               children [
-                                                                Pose {
-                                                                  translation 0.000000 0.000000 -0.020000
+                                                                Solid {
+                                                                  rotation -0.000000 0.707107 0.707107 3.141593
                                                                   children [
-                                                                    Shape {
-                                                                      appearance DEF darkred PBRAppearance {
-                                                                        baseColor 0.500000 0.100000 0.100000
-                                                                        roughness 1.000000
-                                                                        metalness 0
-                                                                      }
-                                                                      geometry Box {
-                                                                         size 0.025000 0.075000 0.035000
-                                                                      }
+                                                                    DEF electric_gripper_base_visual CadShape {
+                                                                      url "baxter/meshes/electric_gripper/electric_gripper_base.DAE"
                                                                     }
                                                                   ]
                                                                 }
                                                                 Solid {
-                                                                  translation 0.000000 0.000000 0.025000
-                                                                  children [
-                                                                    Shape {
-                                                                      appearance USE black
-                                                                      geometry Box {
-                                                                         size 0.010000 0.010000 0.010000
-                                                                      }
-                                                                    }
-                                                                  ]
+                                                                  translation 0.000000 0.000000 0.132700
                                                                   name "right_gripper"
                                                                   physics Physics {
                                                                     density -1
                                                                     mass 0.000100
-                                                                    centerOfMass [ 0.000000 0.000000 0.000000 ]
-                                                                    inertiaMatrix [
-                                                                      1.000000e-08 1.000000e-08 1.000000e-08
-                                                                      0.000000e+00 0.000000e+00 0.000000e+00
+                                                                  }
+                                                                }
+                                                                SliderJoint {
+                                                                  jointParameters JointParameters {
+                                                                    axis 0.000000 1.000000 0.000000
+                                                                    dampingConstant 0.7
+                                                                  }
+                                                                  device [
+                                                                    LinearMotor {
+                                                                      name "r_gripper_l_finger_joint"
+                                                                      maxVelocity 5.0
+                                                                      maxPosition 0.020833
+                                                                      maxForce 20.0
+                                                                    }
+                                                                    PositionSensor {
+                                                                      name "r_gripper_l_finger_joint_sensor"
+                                                                    }
+                                                                  ]
+                                                                  endPoint Solid {
+                                                                    translation 0.000000 -0.001500 0.020000
+                                                                    children [
+                                                                      Solid {
+                                                                        rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                        children [
+                                                                          DEF extended_narrow_visual CadShape {
+                                                                            url "baxter/meshes/electric_gripper/fingers/extended_narrow.DAE"
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                      Solid {
+                                                                        translation 0.000000 0.017250 0.112700
+                                                                        children [
+                                                                          Solid {
+                                                                            rotation 0.000000 0.000000 1.000000 3.141593
+                                                                            children [
+                                                                              DEF half_round_tip_visual CadShape {
+                                                                                url "baxter/meshes/electric_gripper/fingers/half_round_tip.DAE"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                        name "r_gripper_l_finger_tip"
+                                                                        boundingObject Transform {
+                                                                          translation 0.000000 -0.004500 -0.015000
+                                                                          rotation 0.000000 0.000000 1.000000 3.141593
+                                                                          children [
+                                                                            Cylinder {
+                                                                              radius 0.008
+                                                                              height 0.037
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        physics Physics {
+                                                                          density -1
+                                                                          mass 0.010000
+                                                                          centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                          inertiaMatrix [
+                                                                            1.000000e-02 1.000000e-02 1.000000e-02
+                                                                            0.000000e+00 0.000000e+00 0.000000e+00
+                                                                          ]
+                                                                        }
+                                                                      }
                                                                     ]
+                                                                    name "r_gripper_l_finger"
+                                                                    boundingObject Group {
+                                                                      children [
+                                                                        Transform {
+                                                                          translation 0.000000 0.017250 0.061500
+                                                                          rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.013500 0.112700
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        Transform {
+                                                                          translation -0.005000 -0.003000 0.008300
+                                                                          rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.050000 0.017000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                    physics Physics {
+                                                                      density -1
+                                                                      mass 0.020000
+                                                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                      inertiaMatrix [
+                                                                        1.000000e-02 1.000000e-02 1.000000e-02
+                                                                        0.000000e+00 0.000000e+00 0.000000e+00
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                }
+                                                                SliderJoint {
+                                                                  jointParameters JointParameters {
+                                                                    axis 0.000000 1.000000 0.000000
+                                                                    dampingConstant 0.7
+                                                                  }
+                                                                  device [
+                                                                    LinearMotor {
+                                                                      name "r_gripper_r_finger_joint"
+                                                                      maxVelocity 5.0
+                                                                      minPosition -0.020833
+                                                                      maxForce 20.0
+                                                                    }
+                                                                    PositionSensor {
+                                                                      name "r_gripper_r_finger_joint_sensor"
+                                                                    }
+                                                                  ]
+                                                                  endPoint Solid {
+                                                                    translation 0.000000 0.001500 0.020000
+                                                                    children [
+                                                                      USE extended_narrow_visual
+                                                                      Solid {
+                                                                        translation 0.000000 -0.017250 0.112700
+                                                                        children [
+                                                                          USE half_round_tip_visual
+                                                                        ]
+                                                                        name "r_gripper_r_finger_tip"
+                                                                        boundingObject Transform {
+                                                                          translation 0.000000 0.004500 -0.015000
+                                                                          children [
+                                                                          Shape {
+                                                                           geometry Cylinder {
+                                                                              radius 0.008
+                                                                              height 0.037
+                                                                            }
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        physics Physics {
+                                                                          density -1
+                                                                          mass 0.010000
+                                                                          centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                          inertiaMatrix [
+                                                                            1.000000e-02 1.000000e-02 1.000000e-02
+                                                                            0.000000e+00 0.000000e+00 0.000000e+00
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                    name "r_gripper_r_finger"
+                                                                    boundingObject Group {
+                                                                      children [
+                                                                        Transform {
+                                                                          translation 0.000000 -0.017250 0.061500
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.013500 0.112700
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        Transform {
+                                                                          translation 0.005000 0.003000 0.008300
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.050000 0.017000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                    physics Physics {
+                                                                      density -1
+                                                                      mass 0.020000
+                                                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                      inertiaMatrix [
+                                                                        1.000000e-02 1.000000e-02 1.000000e-02
+                                                                        0.000000e+00 0.000000e+00 0.000000e+00
+                                                                      ]
+                                                                    }
                                                                   }
                                                                 }
                                                               ]
                                                               name "right_gripper_base"
+                                                              boundingObject Transform {
+                                                                rotation -0.000000 0.707107 0.707107 3.141593
+                                                                children [
+                                                                  Cylinder {
+                                                                    radius 0.029
+                                                                    height 0.1
+                                                                  }
+                                                                ]
+                                                              }
                                                               physics Physics {
                                                                 density -1
-                                                                mass 0.000100
+                                                                mass 0.300000
                                                                 centerOfMass [ 0.000000 0.000000 0.000000 ]
                                                                 inertiaMatrix [
-                                                                  1.000000e-08 1.000000e-08 1.000000e-08
-                                                                  0.000000e+00 0.000000e+00 0.000000e+00
+                                                                  2.000000e-08 2.000000e-08 3.000000e-08
+                                                                  0.000000e+00 2.536327e-25 2.220446e-24
                                                                 ]
                                                               }
                                                             }
                                                           ]
                                                           name "right_hand"
-                                                          boundingObject Pose {
+                                                          boundingObject Transform {
                                                             translation 0.000000 0.000000 -0.023200
                                                             children [
                                                               Cylinder {
@@ -737,7 +856,7 @@ PROTO baxter [
                                             }
                                           ]
                                           name "right_upper_forearm"
-                                          boundingObject Pose {
+                                          boundingObject Transform {
                                             translation 0.000000 0.000000 -0.044000
                                             children [
                                               Cylinder {
@@ -761,7 +880,7 @@ PROTO baxter [
                                         translation 0.088000 0.000000 0.000000
                                         rotation 0.577350 0.577350 0.577350 2.094395
                                         name "right_upper_forearm_visual"
-                                        boundingObject Pose {
+                                        boundingObject Transform {
                                           translation 0.000000 0.000000 0.136000
                                           children [
                                             Cylinder {
@@ -799,7 +918,7 @@ PROTO baxter [
                                 }
                               ]
                               name "right_upper_elbow"
-                              boundingObject Pose {
+                              boundingObject Transform {
                                 translation 0.000000 0.000000 -0.053500
                                 children [
                                   Cylinder {
@@ -823,7 +942,7 @@ PROTO baxter [
                             translation 0.107000 0.000000 0.000000
                             rotation 0.577350 0.577350 0.577350 2.094395
                             name "right_upper_elbow_visual"
-                            boundingObject Pose {
+                            boundingObject Transform {
                               translation 0.000000 0.000000 0.136500
                               children [
                                 Cylinder {
@@ -861,7 +980,7 @@ PROTO baxter [
                     }
                   ]
                   name "right_upper_shoulder"
-                  boundingObject Pose {
+                  boundingObject Transform {
                     translation 0.000000 0.000000 0.136100
                     children [
                       Cylinder {
@@ -931,7 +1050,7 @@ PROTO baxter [
                           maxVelocity 1.5
                           minPosition -2.147
                           maxPosition 1.047
-                          maxTorque 100.0
+                          maxTorque 50.0
                         }
                         PositionSensor {
                           name "left_s1_sensor"
@@ -1085,19 +1204,6 @@ PROTO baxter [
                                                                     height 0.01
                                                                   }
                                                                 }
-                                                                Pose {
-                                                                  translation 0 0 0
-                                                                  rotation 0.577350 -0.577350 0.577350 2.094395
-                                                                  children [
-                                                                    Camera {
-                                                                      name "left_hand_camera"
-                                                                      fieldOfView 1.396263
-                                                                      width 800
-                                                                      height 800
-                                                                      noise 0.007000
-                                                                    }
-                                                                  ]
-                                                                }
                                                               ]
                                                               name "left_hand_camera"
                                                               physics Physics {
@@ -1112,6 +1218,26 @@ PROTO baxter [
                                                             }
                                                             Solid {
                                                               translation 0.038250 0.012000 0.015355
+                                                              children [
+                                                                Solid {
+                                                                  rotation 0.000000 -1.000000 0.000000 1.570796
+                                                                  children [
+                                                                    Solid {
+                                                                      translation 0 0 0
+                                                                      rotation 0.577350 -0.577350 0.577350 2.094395
+                                                                      children [
+                                                                        Camera {
+                                                                          name "left_camera"
+                                                                          fieldOfView 1.047000
+                                                                          width 640
+                                                                          height 400
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                  name "left_hand_camera_gz"
+                                                                }
+                                                              ]
                                                               name "left_hand_camera_axis"
                                                               physics Physics {
                                                                 density -1
@@ -1132,15 +1258,6 @@ PROTO baxter [
                                                                   geometry Box {
                                                                      size 0.005000 0.020000 0.005000
                                                                   }
-                                                                }
-                                                                Lidar {
-                                                                  name "ir_left"
-                                                                  fieldOfView 1.000000
-                                                                  horizontalResolution 1
-                                                                  numberOfLayers 1
-                                                                  minRange 0.004000
-                                                                  maxRange 0.400000
-                                                                  near 0.004000
                                                                 }
                                                               ]
                                                               name "left_hand_range"
@@ -1176,54 +1293,215 @@ PROTO baxter [
                                                               }
                                                             }
                                                             Solid {
+                                                              translation 0.000000 0.000000 0.025000
                                                               children [
-                                                                Pose {
-                                                                  translation 0.000000 0.000000 -0.020000
+                                                                Solid {
+                                                                  rotation -0.000000 0.707107 0.707107 3.141593
                                                                   children [
-                                                                    Shape {
-                                                                      appearance USE darkred
-                                                                      geometry Box {
-                                                                         size 0.025000 0.075000 0.035000
-                                                                      }
-                                                                    }
+                                                                    USE electric_gripper_base_visual
                                                                   ]
                                                                 }
                                                                 Solid {
-                                                                  translation 0.000000 0.000000 0.025000
-                                                                  children [
-                                                                    Shape {
-                                                                      appearance USE black
-                                                                      geometry Box {
-                                                                         size 0.010000 0.010000 0.010000
-                                                                      }
-                                                                    }
-                                                                  ]
+                                                                  translation 0.000000 0.000000 0.132700
                                                                   name "left_gripper"
                                                                   physics Physics {
                                                                     density -1
                                                                     mass 0.000100
-                                                                    centerOfMass [ 0.000000 0.000000 0.000000 ]
-                                                                    inertiaMatrix [
-                                                                      1.000000e-08 1.000000e-08 1.000000e-08
-                                                                      0.000000e+00 0.000000e+00 0.000000e+00
+                                                                  }
+                                                                }
+                                                                SliderJoint {
+                                                                  jointParameters JointParameters {
+                                                                    axis 0.000000 1.000000 0.000000
+                                                                    dampingConstant 0.7
+                                                                  }
+                                                                  device [
+                                                                    LinearMotor {
+                                                                      name "l_gripper_l_finger_joint"
+                                                                      maxVelocity 5.0
+                                                                      maxPosition 0.020833
+                                                                      maxForce 20.0
+                                                                    }
+                                                                    PositionSensor {
+                                                                      name "l_gripper_l_finger_joint_sensor"
+                                                                    }
+                                                                  ]
+                                                                  endPoint Solid {
+                                                                    translation 0.000000 -0.001500 0.020000
+                                                                    children [
+                                                                      Solid {
+                                                                        rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                        children [
+                                                                          USE extended_narrow_visual
+                                                                        ]
+                                                                      }
+                                                                      Solid {
+                                                                        translation 0.000000 0.017250 0.112700
+                                                                        children [
+                                                                          Solid {
+                                                                            rotation 0.000000 0.000000 1.000000 3.141593
+                                                                            children [
+                                                                              DEF paddle_tip_visual CadShape {
+                                                                                url "baxter/meshes/electric_gripper/fingers/paddle_tip.DAE"
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                        name "l_gripper_l_finger_tip"
+                                                                        boundingObject Transform {
+                                                                          translation 0.000000 -0.004500 -0.015000
+                                                                          rotation 0.000000 0.000000 1.000000 3.141593
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.042000 0.006500 0.037000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        physics Physics {
+                                                                          density -1
+                                                                          mass 0.010000
+                                                                          centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                          inertiaMatrix [
+                                                                            1.000000e-02 1.000000e-02 1.000000e-02
+                                                                            0.000000e+00 0.000000e+00 0.000000e+00
+                                                                          ]
+                                                                        }
+                                                                      }
                                                                     ]
+                                                                    name "l_gripper_l_finger"
+                                                                    boundingObject Group {
+                                                                      children [
+                                                                        Transform {
+                                                                          translation 0.000000 0.017250 0.061500
+                                                                          rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.013500 0.112700
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        Transform {
+                                                                          translation -0.005000 -0.003000 0.008300
+                                                                          rotation 0.000000 0.000000 -1.000000 3.141593
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.050000 0.017000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                    physics Physics {
+                                                                      density -1
+                                                                      mass 0.020000
+                                                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                      inertiaMatrix [
+                                                                        1.000000e-02 1.000000e-02 1.000000e-02
+                                                                        0.000000e+00 0.000000e+00 0.000000e+00
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                }
+                                                                SliderJoint {
+                                                                  jointParameters JointParameters {
+                                                                    axis 0.000000 1.000000 0.000000
+                                                                    dampingConstant 0.7
+                                                                  }
+                                                                  device [
+                                                                    LinearMotor {
+                                                                      name "l_gripper_r_finger_joint"
+                                                                      maxVelocity 5.0
+                                                                      minPosition -0.020833
+                                                                      maxForce 20.0
+                                                                    }
+                                                                    PositionSensor {
+                                                                      name "l_gripper_r_finger_joint_sensor"
+                                                                    }
+                                                                  ]
+                                                                  endPoint Solid {
+                                                                    translation 0.000000 0.001500 0.020000
+                                                                    children [
+                                                                      USE extended_narrow_visual
+                                                                      Solid {
+                                                                        translation 0.000000 -0.017250 0.112700
+                                                                        children [
+                                                                          USE paddle_tip_visual
+                                                                        ]
+                                                                        name "l_gripper_r_finger_tip"
+                                                                        boundingObject Transform {
+                                                                          translation 0.000000 0.004500 -0.015000
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.042000 0.006500 0.037000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        physics Physics {
+                                                                          density -1
+                                                                          mass 0.010000
+                                                                          centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                          inertiaMatrix [
+                                                                            1.000000e-02 1.000000e-02 1.000000e-02
+                                                                            0.000000e+00 0.000000e+00 0.000000e+00
+                                                                          ]
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                    name "l_gripper_r_finger"
+                                                                    boundingObject Group {
+                                                                      children [
+                                                                        Transform {
+                                                                          translation 0.000000 -0.017250 0.061500
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.013500 0.112700
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                        Transform {
+                                                                          translation 0.005000 0.003000 0.008300
+                                                                          children [
+                                                                            Box {
+                                                                               size 0.010000 0.050000 0.017000
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                    physics Physics {
+                                                                      density -1
+                                                                      mass 0.020000
+                                                                      centerOfMass [ 0.000000 0.000000 0.000000 ]
+                                                                      inertiaMatrix [
+                                                                        1.000000e-02 1.000000e-02 1.000000e-02
+                                                                        0.000000e+00 0.000000e+00 0.000000e+00
+                                                                      ]
+                                                                    }
                                                                   }
                                                                 }
                                                               ]
                                                               name "left_gripper_base"
+                                                              boundingObject Transform {
+                                                                rotation -0.000000 0.707107 0.707107 3.141593
+                                                                children [
+                                                                  Cylinder {
+                                                                    radius 0.029
+                                                                    height 0.1
+                                                                  }
+                                                                ]
+                                                              }
                                                               physics Physics {
                                                                 density -1
-                                                                mass 0.000100
+                                                                mass 0.300000
                                                                 centerOfMass [ 0.000000 0.000000 0.000000 ]
                                                                 inertiaMatrix [
-                                                                  1.000000e-08 1.000000e-08 1.000000e-08
-                                                                  0.000000e+00 0.000000e+00 0.000000e+00
+                                                                  2.000000e-08 2.000000e-08 3.000000e-08
+                                                                  0.000000e+00 2.536327e-25 2.220446e-24
                                                                 ]
                                                               }
                                                             }
                                                           ]
                                                           name "left_hand"
-                                                          boundingObject Pose {
+                                                          boundingObject Transform {
                                                             translation 0.000000 0.000000 -0.023200
                                                             children [
                                                               Cylinder {
@@ -1278,7 +1556,7 @@ PROTO baxter [
                                             }
                                           ]
                                           name "left_upper_forearm"
-                                          boundingObject Pose {
+                                          boundingObject Transform {
                                             translation 0.000000 0.000000 -0.044000
                                             children [
                                               Cylinder {
@@ -1302,7 +1580,7 @@ PROTO baxter [
                                         translation 0.088000 0.000000 0.000000
                                         rotation 0.577350 0.577350 0.577350 2.094395
                                         name "left_upper_forearm_visual"
-                                        boundingObject Pose {
+                                        boundingObject Transform {
                                           translation 0.000000 0.000000 0.136000
                                           children [
                                             Cylinder {
@@ -1340,7 +1618,7 @@ PROTO baxter [
                                 }
                               ]
                               name "left_upper_elbow"
-                              boundingObject Pose {
+                              boundingObject Transform {
                                 translation 0.000000 0.000000 -0.053500
                                 children [
                                   Cylinder {
@@ -1364,7 +1642,7 @@ PROTO baxter [
                             translation 0.107000 0.000000 0.000000
                             rotation 0.577350 0.577350 0.577350 2.094395
                             name "left_upper_elbow_visual"
-                            boundingObject Pose {
+                            boundingObject Transform {
                               translation 0.000000 0.000000 0.136500
                               children [
                                 Cylinder {
@@ -1402,7 +1680,7 @@ PROTO baxter [
                     }
                   ]
                   name "left_upper_shoulder"
-                  boundingObject Pose {
+                  boundingObject Transform {
                     translation 0.000000 0.000000 0.136100
                     children [
                       Cylinder {
@@ -1434,10 +1712,30 @@ PROTO baxter [
               ]
             }
           }
+          Solid {
+            children [
+              DEF PEDESTAL_visual CadShape {
+                url "baxter/meshes/base/PEDESTAL.DAE"
+              }
+            ]
+            name "pedestal"
+            boundingObject DEF pedestal_link_collision Mesh {
+              url "baxter/meshes/base/pedestal_link_collision.DAE"
+            }
+            physics Physics {
+              density -1
+              mass 60.863977
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+              inertiaMatrix [
+                5.063593e+00 6.086894e+00 4.961919e+00
+                1.034170e-03 8.019963e-01 1.053110e-03
+              ]
+            }
+          }
         ]
         name "torso"
         boundingObject DEF base_link_collision Mesh {
-          url "/home/sahil/ws_testing/src/baxter_common_ros2/baxter_description/meshes/torso/base_link_collision.DAE"
+          url "baxter/meshes/torso/base_link_collision.DAE"
         }
         physics Physics {
           density -1
