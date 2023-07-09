@@ -3,12 +3,13 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "../protos/baxter.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.20017198488473506 0.6461988210467221 0.7364497675640421 0.7963306633262588
-  position -13.098818809439845 -9.021736654384089 9.082639806517603
+  orientation -0.06035368042505057 0.01705608550071355 0.9980313237602031 2.591829808424874
+  position 5.0545680783695905 -3.5048020785554894 1.7115159896400105
 }
 TexturedBackground {
 }
@@ -17,4 +18,10 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 10 10
   floorTileSize 1 1
+}
+baxter {
+  translation 0 0 1.04
+  rotation 0 1 0 0
+  controller "baxter_arm_motor"
+  selfCollision TRUE
 }
