@@ -1,0 +1,8 @@
+[31mCMake Error at /ros2_humble/install/rosidl_cmake/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):
+  rosidl_generate_interfaces() the passed file 'msg/CustomMessage.msg'
+  doesn't exist relative to the CMAKE_CURRENT_SOURCE_DIR
+  '/ws_ros2/src/custom_msg_ros2'
+Call Stack (most recent call first):
+  CMakeLists.txt:12 (rosidl_generate_interfaces)
+
+[0m

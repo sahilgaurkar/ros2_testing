@@ -1,0 +1,22 @@
+[0.030s] Invoking command in '/ws_ros2/build/custom_msg_ros2': /usr/bin/cmake --build /ws_ros2/build/custom_msg_ros2 -- -j4 -l4
+[0.149s] -- Found ament_cmake: 1.3.5 (/ros2_humble/install/ament_cmake/share/ament_cmake/cmake)
+[0.500s] Traceback (most recent call last):
+[0.501s]   File "/ros2_humble/install/ament_cmake_core/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>
+[0.501s]     from ament_package.templates import get_environment_hook_template_path
+[0.501s] ModuleNotFoundError: No module named 'ament_package'
+[0.512s] -- Configuring incomplete, errors occurred!
+[0.513s] See also "/ws_ros2/build/custom_msg_ros2/CMakeFiles/CMakeOutput.log".
+[0.513s] [31mCMake Error at /ros2_humble/install/ament_cmake_core/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):
+[0.513s]   execute_process(/usr/bin/python3.10
+[0.513s]   /ros2_humble/install/ament_cmake_core/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py
+[0.518s]   /ws_ros2/build/custom_msg_ros2/ament_cmake_package_templates/templates.cmake)
+[0.518s]   returned error code 1
+[0.518s] Call Stack (most recent call first):
+[0.518s]   /ros2_humble/install/ament_cmake_core/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)
+[0.518s]   /ros2_humble/install/ament_cmake/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)
+[0.519s]   /ros2_humble/install/ament_cmake/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)
+[0.519s]   CMakeLists.txt:9 (find_package)
+[0.530s] 
+[0.530s] [0m
+[0.530s] gmake: *** [Makefile:541: cmake_check_build_system] Error 1
+[0.531s] Invoked command in '/ws_ros2/build/custom_msg_ros2' returned '2': /usr/bin/cmake --build /ws_ros2/build/custom_msg_ros2 -- -j4 -l4

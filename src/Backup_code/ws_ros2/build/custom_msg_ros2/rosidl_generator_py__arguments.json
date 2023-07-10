@@ -1,0 +1,24 @@
+{
+  "package_name": "custom_msg_ros2",
+  "output_dir": "/ws_ros2/build/custom_msg_ros2/rosidl_generator_py/custom_msg_ros2",
+  "template_dir": "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource",
+  "idl_tuples": [
+    "/ws_ros2/build/custom_msg_ros2/rosidl_adapter/custom_msg_ros2:msg/CustomMessage.idl"
+  ],
+  "target_dependencies": [
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py",
+    "/ros2_humble/install/rosidl_generator_py/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py",
+    "/ros2_humble/install/rosidl_generator_py/local/lib/python3.10/dist-packages/rosidl_generator_py/generate_py_impl.py",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_action_pkg_typesupport_entry_point.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_action.py.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_idl_pkg_typesupport_entry_point.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_idl_support.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_idl.py.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_msg_pkg_typesupport_entry_point.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_msg_support.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_msg.py.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_srv_pkg_typesupport_entry_point.c.em",
+    "/ros2_humble/install/rosidl_generator_py/share/rosidl_generator_py/cmake/../resource/_srv.py.em",
+    "/ws_ros2/build/custom_msg_ros2/rosidl_adapter/custom_msg_ros2/msg/CustomMessage.idl"
+  ]
+}
