@@ -1,8 +1,0 @@
-prefix=/ws_ros1/devel
-
-Name: custom_msg_ros1
-Description: Description of custom_msg_ros1
-Version: 0.0.0
-Cflags: -I/ws_ros1/devel/include
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,2 +1,0 @@
-Invoking command in '/ws_ros2/build/custom_msg_ros2': /usr/bin/cmake --build /ws_ros2/build/custom_msg_ros2 -- -j4 -l4
-Invoked command in '/ws_ros2/build/custom_msg_ros2' returned '2': /usr/bin/cmake --build /ws_ros2/build/custom_msg_ros2 -- -j4 -l4

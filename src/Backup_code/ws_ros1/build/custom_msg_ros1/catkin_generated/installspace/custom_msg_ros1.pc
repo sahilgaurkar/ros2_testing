@@ -1,8 +1,0 @@
-prefix=/opt/ros/noetic
-
-Name: custom_msg_ros1
-Description: Description of custom_msg_ros1
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: 
